@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ${{ values.microserviceName }}
+  namespace: [[namespace]]
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: ${{ values.microserviceName }}
+      version: '0.0.x'
+      sourceRef:
+        kind: HelmRepository
+        name: ${{ values.microserviceName }}
+      interval: 5m
+  releaseName: ${{ values.microserviceName }}
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    replicaCount: 2
+    labels:
+      teamName: ${{ values.teamName }}
+    env: cloudbox

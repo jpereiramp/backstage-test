@@ -1,0 +1,98 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: multi-pr-microservice-template
+  title: Create Microservice PRs
+  description: Opens PRs to Frame Sonarqube, Crankset, and Cloudbox
+spec:
+  owner: example/techdocs-core
+  type: service
+
+  parameters:
+    - title: Microservice Info
+      required:
+        - microserviceName
+        - ownerTeam
+      properties:
+        microserviceName:
+          type: string
+          title: Microservice Name
+        ownerTeam:
+          type: string
+          title: Owner Team
+
+    - title: Select PR Targets
+      properties:
+        sonarqube:
+          title: Frame SonarQube
+          default: true
+          type: boolean
+          ui:widget: radio
+        crankset:
+          title: Crankset
+          default: true
+          type: boolean
+          ui:widget: radio
+        cloudbox:
+          title: Cloudbox
+          default: true
+          type: boolean
+          ui:widget: radio
+
+  steps:
+    - id: prepare
+      name: Prepare Content
+      action: fetch:template
+      input:
+        url: https://github.com/jpereiramp/backstage-test/blob/main/templates/infra-prs-skeleton
+        values:
+          microserviceName: ${{ parameters.microserviceName }}
+          teamName: ${{ parameters.ownerTeam }}
+        url: ./skeleton
+
+    - id: pr-frame
+      name: Create PR to Frame Sonarqube
+      if: ${{ parameters.sonarqube }}
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=backstage-test&owner=jpereiramp
+        branchName: ${{ parameters.microserviceName }}-init
+        title: Add service ${{ parameters.microserviceName }}
+        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        targetPath: ./workspace/frame
+        files:
+          - ${{ parameters.microserviceName }}.yaml
+        token: ${{ secrets.githubToken }}
+
+    - id: pr-crankset
+      name: Create PR to Crankset
+      if: ${{ parameters.crankset }}
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=backstage-test&owner=jpereiramp
+        branchName: ${{ parameters.microserviceName }}-init
+        title: Add service ${{ parameters.microserviceName }}
+        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        targetPath: ./workspace/crankset
+        files:
+          - ${{ parameters.microserviceName }}.yaml
+        token: ${{ secrets.githubToken }}
+
+    - id: pr-cloudbox
+      name: Create PR to Cloudbox
+      if: ${{ parameters.cloudbox }}
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=backstage-test&owner=jpereiramp
+        branchName: ${{ parameters.microserviceName }}-init
+        title: Add service ${{ parameters.microserviceName }}
+        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        targetPath: ./workspace/cloudbox
+        files:
+          - ${{ parameters.microserviceName }}.yaml
+        token: ${{ secrets.githubToken }}
+
+  output:
+    links:
+      - title: View PRs in GitHub
+        url: https://github.com/pulls?q=is%3Apr+is%3Aopen+author%3Ame

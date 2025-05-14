@@ -1,0 +1,19 @@
+resource "sonarqube_project" "${{ values.microserviceName }}" {
+  name       = "${{ values.microserviceName }}"
+  project    = "com.zwift.microservices:${{ values.microserviceName }}
+  tags       = ["team-${{ values.teamName }}", "product.${{ values.microserviceName }}"]
+  visibility = "public"
+}
+
+resource "sonarqube_project_main_branch" "${{ values.microserviceName }}-main" {
+  name    = "main"
+  project = sonarqube_project.${{ values.microserviceName }}.project
+}
+
+resource "sonarqube_github_binding" "${{ values.microserviceName }}-github" {
+  alm_setting             = local.github-zwift-alm
+  monorepo                = "false"
+  project                 = sonarqube_project.${{ values.microserviceName }}.project
+  repository              = "zwift/${{ values.microserviceName }}"
+  summary_comment_enabled = "true"
+}
