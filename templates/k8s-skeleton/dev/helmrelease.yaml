@@ -26,3 +26,7 @@ spec:
     replicaCount: 2
     labels:
       teamName: ${{ values.teamName }}
+{% if "Kafka" in values.features %}
+    kafka:
+      topic: my-test-topic-dlq.${{ values.teamName }}       
+{% endif %}

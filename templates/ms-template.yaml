@@ -23,6 +23,19 @@ spec:
           type: string
           title: Team Name
           description: Name of the team who owns this service
+    - title: Features
+      properties:
+        features:
+          title: Select Features
+          type: array
+          items:
+            type: string
+            enum:
+              - REST
+              - Kafka
+              - PostgreSQL
+          uniqueItems: true
+          ui:widget: checkboxes
 
   steps:
     - id: fetch-template

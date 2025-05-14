@@ -1,0 +1,10 @@
+{% if "PostgreSQL" in values.features %}
+package com.zwift.persistence.{{ values.name | lower | replace("-", "") }};
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+{% endif %}

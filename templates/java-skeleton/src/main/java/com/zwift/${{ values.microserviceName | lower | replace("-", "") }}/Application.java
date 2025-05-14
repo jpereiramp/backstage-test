@@ -1,4 +1,4 @@
-package com.example.${{ values.microserviceName | lower | replace("-", "") }};
+package com.zwift.${{ values.microserviceName | lower | replace("-", "") }};
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

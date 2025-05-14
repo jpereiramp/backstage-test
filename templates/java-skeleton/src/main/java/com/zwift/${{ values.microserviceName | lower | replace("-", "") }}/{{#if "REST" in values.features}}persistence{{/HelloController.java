@@ -1,4 +1,5 @@
-package com.example.${{ values.microserviceName | lower | replace("-", "") }};
+{% if "REST" in values.features %}
+package com.zwift.rest.${{ values.microserviceName | lower | replace("-", "") }};
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,3 +17,4 @@ public class HelloController {
         return "OK";
     }
 }
+{% endif %}

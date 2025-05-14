@@ -15,13 +15,33 @@
         <java.version>17</java.version>
         <spring.boot.version>3.2.0</spring.boot.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+{% if "PostgreSQL" in values.features %}
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-hibernate</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>        
+{% endif %}
+{% if "Kafka" in values.features %}
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-kafka</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>        
+{% endif %}
+{% if "REST" in values.features %}
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-rest</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>        
+{% endif %}
     </dependencies>
 
     <build>
