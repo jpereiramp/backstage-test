@@ -14,8 +14,7 @@ spec:
   parameters:
     - title: Service Info
       required:
-        - name
-        - repoUrl
+        - microserviceName
       properties:
         microserviceName:
           type: string
