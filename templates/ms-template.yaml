@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v9
+  title: Java Microservice v10
   description: Creates a new Java microservice with Springboot
 spec:
   owner: backstage/techdocs-core
@@ -45,7 +45,9 @@ spec:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
-          features: ${{ parameters.features }}
+          kafkaBoilerplate: ${{ parameters.kafkaBoilerplate }}
+          restBoilerplate: ${{ parameters.restBoilerplate }}
+          postgresBoilerplate: ${{ parameters.postgresBoilerplate }}
         templateFileExtension: .njk
     - id: fetch-k8s
       name: Generate K8s Code
