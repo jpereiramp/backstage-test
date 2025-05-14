@@ -59,9 +59,7 @@ spec:
         title: Add service ${{ parameters.microserviceName }}
         description: |
           Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
-        targetPath: ./workspace/frame
-        files:
-          - ${{ parameters.microserviceName }}.yaml
+        targetPath: ./frame-sonarqube
         token: ${{ secrets.githubToken }}
 
     - id: pr-crankset
@@ -74,7 +72,7 @@ spec:
         title: Add service ${{ parameters.microserviceName }}
         description:  |
           Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
-        targetPath: ./workspace/crankset
+        targetPath: ./crankset
         files:
           - ${{ parameters.microserviceName }}.yaml
         token: ${{ secrets.githubToken }}
@@ -89,9 +87,7 @@ spec:
         title: Add service ${{ parameters.microserviceName }}
         description:  |
           Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
-        targetPath: ./workspace/cloudbox
-        files:
-          - ${{ parameters.microserviceName }}.yaml
+        targetPath: ./cloudbox
         token: ${{ secrets.githubToken }}
 
   output:
