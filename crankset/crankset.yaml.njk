@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: spokes-service
+  namespace: qa-1
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: spokes-service
+      version: '0.0.x'
+      sourceRef:
+        kind: HelmRepository
+        name: spokes-service
+      interval: 5m
+  releaseName: spokes-service
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    replicaCount: 2
+    labels:
+      teamName: pace
+    env: qa-1
