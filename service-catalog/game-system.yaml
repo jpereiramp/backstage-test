@@ -1,0 +1,61 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: game
+  description: The game
+spec:
+  owner: best-team
+  domain: game
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: game-api-service
+  description: The place for all game related stuff
+spec:
+  type: microservice
+  lifecycle: production
+  owner: best-team
+  system: game
+  dependsOn:
+    - resource:default/game-api-db
+  # dependencyOf:
+  #   - component:default/artist-web-lookup
+  providesApis:
+    - game-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: game-api-db
+  description: Stores game data
+spec:
+  type: database
+  owner: best-team
+  system: game
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: game-api
+  description: REST API for game-related data, which end-users and game client communicate with
+spec:
+  type: openapi
+  lifecycle: production
+  owner: best-team
+  system: game
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Game API
+      license:
+        name: MIT
+    servers:
+      - url: http://matches.gamingcompany.com/v1
+    paths:
+      /artists:
+        get:
+          summary: List all matches
+    ...
