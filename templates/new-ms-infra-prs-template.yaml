@@ -57,7 +57,8 @@ spec:
         repoUrl: github.com?repo=backstage-test&owner=jpereiramp
         branchName: ${{ parameters.microserviceName }}-init
         title: Add service ${{ parameters.microserviceName }}
-        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        description: |
+          Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
         targetPath: ./workspace/frame
         files:
           - ${{ parameters.microserviceName }}.yaml
@@ -71,7 +72,8 @@ spec:
         repoUrl: github.com?repo=backstage-test&owner=jpereiramp
         branchName: ${{ parameters.microserviceName }}-init
         title: Add service ${{ parameters.microserviceName }}
-        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        description:  |
+          Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
         targetPath: ./workspace/crankset
         files:
           - ${{ parameters.microserviceName }}.yaml
@@ -85,7 +87,8 @@ spec:
         repoUrl: github.com?repo=backstage-test&owner=jpereiramp
         branchName: ${{ parameters.microserviceName }}-init
         title: Add service ${{ parameters.microserviceName }}
-        description: Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
+        description:  |
+          Adding service metadata for ${{ parameters.microserviceName }} (Team: ${{ parameters.ownerTeam }})
         targetPath: ./workspace/cloudbox
         files:
           - ${{ parameters.microserviceName }}.yaml
