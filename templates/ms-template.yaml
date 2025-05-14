@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v4
+  title: Java Microservice v5
   description: Creates a new Java microservice with Springboot
 spec:
   owner: backstage/techdocs-core
