@@ -1,0 +1,10 @@
+site_name: 'Example Game Documentation'
+repo_url: https://github.com/backstage/backstage
+edit_uri: edit/main/docs/game-docs
+
+nav:
+  - Home: index.md
+  - Subpage: sub-page.md
+
+plugins:
+  - techdocs-core
