@@ -27,7 +27,7 @@ spec:
   steps:
     - id: fetch-template
       name: Generate Java Code
-      action: fetch:template:file
+      action: fetch:template
       input:
         url: github:https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
