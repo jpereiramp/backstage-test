@@ -1,4 +1,4 @@
-package com.example.${{ values.microserviceName | dump | lower | replace("-", "") }};
+package com.example.${{ values.microserviceName | lower | replace("-", "") }};
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

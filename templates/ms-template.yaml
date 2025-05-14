@@ -32,6 +32,14 @@ spec:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
+    - id: fetch-template
+      name: Generate K8s Code
+      action: fetch:template
+      input:
+        url: https://github.com/jpereiramp/backstage-test/blob/main/templates/k8s-skeleton
+        values:
+          microserviceName: ${{ parameters.microserviceName }}
+          teamName: ${{ parameters.teamName }}
     - id: publish
       name: Publish to GitHub v2
       action: publish:github
