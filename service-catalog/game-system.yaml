@@ -5,7 +5,8 @@ metadata:
   name: best-team
   description: The BEST team
 spec:
-  type: business-unit
+  type: platform-tot
+  children: []
   profile:
     displayName: BEST
     email: best@company.com
@@ -54,6 +55,8 @@ spec:
   type: database
   owner: best-team
   system: game
+  dependencyOf:
+    - component:default/game-api-service
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -75,7 +78,11 @@ spec:
     servers:
       - url: http://matches.gamingcompany.com/v1
     paths:
-      /artists:
+      /game:
         get:
           summary: List all matches
-
+        post:
+          summary: Create new Game match
+      /admin/game
+        put:
+          summary: Edit ongoing match
