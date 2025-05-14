@@ -1,9 +1,8 @@
-# Notice the v1beta3 version
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the template itself
 metadata:
-  name: v1beta3-demo
+  name: java-ms-backstage-template
   title: Java Microservice
   description: create a new java microservice with springboot
 spec:
