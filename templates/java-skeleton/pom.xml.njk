@@ -21,21 +21,21 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-{% if "PostgreSQL" in values.features %}
+{% if values.postgresBoilerplate %}
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-hibernate</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>        
 {% endif %}
-{% if "Kafka" in values.features %}
+{% if values.kafkaBoilerplate %}
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-kafka</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>        
 {% endif %}
-{% if "REST" in values.features %}
+{% if values.restBoilerplate %}
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-rest</artifactId>

@@ -1,4 +1,4 @@
-{% if "REST" in values.features %}
+{% if values.restBoilerplate %}
 package com.zwift.rest.${{ values.microserviceName | lower | replace("-", "") }};
 
 import org.springframework.web.bind.annotation.GetMapping;

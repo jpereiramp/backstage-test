@@ -1,4 +1,4 @@
-{% if "Kafka" in values.features %}
+{% if values.kafkaBoilerplate %}
 package com.zwift.async.{{ values.microserviceName | lower | replace("-", "") }};
 
 import org.apache.kafka.clients.producer.ProducerConfig;

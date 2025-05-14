@@ -3,11 +3,11 @@ server:
 spring:
   application:
     name: ${{ values.microserviceName }}
-{% if "Kafka" in values.features %}
+{% if values.kafkaBoilerplate %}
   kafka:
     host: kafka:9092
 {% endif %}
-{% if "PostgreSQL" in values.features %}
+{% if values.postgresBoilerplate %}
   db:
     host: jdbc://my-db:5432/database
     user: test-user

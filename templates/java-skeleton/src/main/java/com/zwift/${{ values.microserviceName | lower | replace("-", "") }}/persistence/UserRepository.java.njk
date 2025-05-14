@@ -1,4 +1,4 @@
-{% if "PostgreSQL" in values.features %}
+{% if values.postgresBoilerplate %}
 package com.zwift.persistence.{{ values.name | lower | replace("-", "") }};
 
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -25,19 +25,18 @@ spec:
           description: Name of the team who owns this service
     - title: Features
       properties:
-        features:
-          title: Select Features
-          type: array
-          default: []
-          items:
-            type: string
-            enum:
-              - REST
-              - Kafka
-              - PostgreSQL
-          uniqueItems: true
-          ui:widget: checkboxes
-
+        kafkaBoilerplate:
+          title: Include Kafka Boilerplate
+          type: boolean
+          ui:widget: radio
+        restBoilerplate:
+          title: Include REST Boilerplate
+          type: boolean
+          ui:widget: radio
+        postgresBoilerplate:
+          title: Include Postgres Boilerplate
+          type: boolean
+          ui:widget: radio
   steps:
     - id: fetch-java
       name: Generate Java Code

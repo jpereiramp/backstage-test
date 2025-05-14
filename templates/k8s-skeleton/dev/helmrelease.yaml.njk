@@ -26,7 +26,15 @@ spec:
     replicaCount: 2
     labels:
       teamName: ${{ values.teamName }}
-{% if "Kafka" in values.features %}
+{% if values.kafkaBoilerplate %}
     kafka:
       topic: my-test-topic-dlq.${{ values.teamName }}       
+{% endif %}
+{% if values.postgresBoilerplate %}
+    db:
+      user: test-user
+{% endif %}
+{% if values.restBoilerplate %}
+    ingress:
+      enabled: true
 {% endif %}
