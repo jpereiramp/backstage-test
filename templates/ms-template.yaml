@@ -58,7 +58,7 @@ spec:
           teamName: ${{ parameters.teamName }}
           features: ${{ parameters.features }}
         templateFileExtension: .njk
-    - id: publish-repo
+    - id: publish
       name: Publish to GitHub
       action: publish:github
       input:
@@ -69,4 +69,4 @@ spec:
   output:
     links:
       - title: Service Repository
-        url: ${{ steps.publish-repo.output.remoteUrl }}
+        url: ${{ steps.publish.output.remoteUrl }}
