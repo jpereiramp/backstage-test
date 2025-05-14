@@ -3,8 +3,8 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice
-  description: create a new java microservice with springboot
+  title: Java Microservice v2
+  description: Create a new Java microservice with Springboot
 spec:
   owner: backstage/techdocs-core
   type: service
@@ -40,7 +40,7 @@ spec:
 
   steps:
     - id: fetch-template
-      name: Generate Java Code v4
+      name: Generate Java Code
       action: fetch:template
       input:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
@@ -48,7 +48,7 @@ spec:
           microserviceName: ${{ parameters.microserviceName }}
           features: ${{ parameters.features }}
     - id: fetch-template
-      name: Generate K8s Code v4
+      name: Generate K8s Code
       action: fetch:template
       input:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/k8s-skeleton
@@ -56,14 +56,6 @@ spec:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.teamName }}
           features: ${{ parameters.features }}
-    - id: publish
-      name: Publish to GitHub v4
-      action: publish:github
-      input:
-        repoUrl: "github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp"
-        description: Service ${{ parameters.microserviceName }} published via Backstage.
-        repoVisibility: private
-        token: ${{ secrets.githubToken }}
     - id: clean-empty-files
       name: Clean up empty files and folders
       action: shell:script
@@ -72,6 +64,14 @@ spec:
         script: |
           find . -type f -empty -delete
           find . -type d -empty -delete
+    - id: publish
+      name: Publish to GitHub
+      action: publish:github
+      input:
+        repoUrl: "github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp"
+        description: Service ${{ parameters.microserviceName }} published via Backstage.
+        repoVisibility: private
+        token: ${{ secrets.githubToken }}
   output:
     links:
       - title: Service Repository
