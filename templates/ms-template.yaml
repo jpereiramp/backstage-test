@@ -56,7 +56,6 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.teamName }}
-          microserviceName: ${{ parameters.microserviceName }}
           kafkaBoilerplate: ${{ parameters.kafkaBoilerplate }}
           restBoilerplate: ${{ parameters.restBoilerplate }}
           postgresBoilerplate: ${{ parameters.postgresBoilerplate }}
