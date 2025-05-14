@@ -44,11 +44,10 @@ spec:
       name: Prepare Content
       action: fetch:template
       input:
-        targetPath: ./workspace
-        templateFileExtension: .yaml
+        url: https://github.com/jpereiramp/backstage-test/blob/main/templates/infra-prs-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
-          ownerTeam: ${{ parameters.ownerTeam }}
+          teamName: ${{ parameters.ownerTeam }}
         url: ./skeleton
 
     - id: pr-frame
