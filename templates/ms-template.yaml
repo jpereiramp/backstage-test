@@ -4,8 +4,8 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: v1beta3-demo
-  title: Test Action template
-  description: scaffolder v1beta3 template demo
+  title: Java Microservice
+  description: create a new java microservice with springboot
 spec:
   owner: backstage/techdocs-core
   type: service
@@ -20,13 +20,17 @@ spec:
           type: string
           title: Service Name
           description: Unique name for your service
+        teamName:
+          type: string
+          title: Team Name
+          description: Name of the team who owns this service
 
   steps:
     - id: fetch-template
       name: Generate Java Code
       action: fetch:template
       input:
-        url: ./templates/java-skeleton
+        url: ./java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
 
