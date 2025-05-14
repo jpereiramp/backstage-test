@@ -33,10 +33,10 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
     - id: publish
-      name: Publish to GitHub
+      name: Publish to GitHub v2
       action: publish:github
       input:
-        repoUrl: github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp
+        repoUrl: "github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp"
         description: Service ${{ parameters.microserviceName }} published via Backstage.
         repoVisibility: private
         token: ${{ secrets.githubToken }}
