@@ -48,7 +48,6 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.ownerTeam }}
-        url: ./skeleton
 
     - id: pr-frame
       name: Create PR to Frame Sonarqube
