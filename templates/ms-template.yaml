@@ -29,7 +29,7 @@ spec:
       name: Generate Java Code
       action: fetch:template:file
       input:
-        url: "https://raw.githubusercontent.com/jpereiramp/backstage-test/refs/heads/main/templates/java-skeleton/src/main/java/com/zwift/%24%7B%7B%20values.microserviceName%20%7C%20dump%20%7C%20lower%20%7C%20replace(%22-%22%2C%20%22%22)%20%7D%7D/HelloController.java"
+        url: github:https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
 
