@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v5
+  title: Java Microservice v6
   description: Creates a new Java microservice with Springboot
 spec:
   owner: backstage/techdocs-core
@@ -58,21 +58,21 @@ spec:
           features: ${{ parameters.features }}
     - id: delete-kafka
       name: Delete Kafka boilerplate
-      if: ${{ !"Kafka" in parameters.features }}
+      if: ${{ !parameters.features.includes("Kafka") }}
       action: fs:delete
       input:
         files:
           - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async/KafkaConfig.java
     - id: delete-rest
       name: Delete REST API boilerplate
-      if: ${{ !"REST" in parameters.features }}
+      if: ${{ !parameters.features.includes("REST") }}
       action: fs:delete
       input:
         files:
           - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest/HelloController.java
     - id: delete-postgres
       name: Delete PostgreSQL boilerplate
-      if: ${{ !"PostgreSQL" in parameters.features }}
+      if: ${{ !parameters.features.includes("PostgreSQL") }}
       action: fs:delete
       input:
         files:
