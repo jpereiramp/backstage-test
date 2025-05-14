@@ -58,4 +58,4 @@ spec:
       /artists:
         get:
           summary: List all matches
-    ...
+
