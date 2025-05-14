@@ -41,7 +41,7 @@ spec:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.teamName }}
     - id: publish
-      name: Publish to GitHub v2
+      name: Publish to GitHub v3
       action: publish:github
       input:
         repoUrl: "github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp"
