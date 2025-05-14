@@ -45,6 +45,7 @@ spec:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
+          features: ${{ parameters.features }}
     - id: fetch-template
       name: Generate K8s Code
       action: fetch:template
@@ -53,6 +54,7 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.teamName }}
+          features: ${{ parameters.features }}
     - id: publish
       name: Publish to GitHub v3
       action: publish:github
