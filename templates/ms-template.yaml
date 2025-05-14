@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v11
+  title: Java Microservice v13
   description: Creates a new Java microservice with Springboot
 spec:
   owner: best-team
@@ -65,20 +65,19 @@ spec:
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async/KafkaConfig.java
+          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async
     - id: delete-rest
       if: ${{ not parameters.restBoilerplate }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest/HelloController.java
+          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest
     - id: delete-postgres
       if: ${{ not parameters.postgresBoilerplate }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/UserRepository.java
-          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/entity/User.java
+          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence
     - id: publish
       name: Publish to GitHub
       action: publish:github
