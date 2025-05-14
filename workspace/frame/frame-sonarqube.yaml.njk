@@ -1,0 +1,19 @@
+resource "sonarqube_project" "hello-world" {
+  name       = "hello-world"
+  project    = "com.zwift.microservices:hello-world
+  tags       = ["team-pace", "product.hello-world"]
+  visibility = "public"
+}
+
+resource "sonarqube_project_main_branch" "hello-world-main" {
+  name    = "main"
+  project = sonarqube_project.hello-world.project
+}
+
+resource "sonarqube_github_binding" "hello-world-github" {
+  alm_setting             = local.github-zwift-alm
+  monorepo                = "false"
+  project                 = sonarqube_project.hello-world.project
+  repository              = "zwift/hello-world"
+  summary_comment_enabled = "true"
+}
