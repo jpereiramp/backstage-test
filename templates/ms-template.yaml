@@ -33,47 +33,47 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
 
-    - id: add-service-to-caravan
-      name: Add Microservice Definition to Caravan
-      action: github:pull-request
-      input:
-        repoUrl: https://github.com/zwift/caravan
-        branchName: add-${{ parameters.microserviceName }}
-        title: Add new microservice ${{ parameters.microserviceName }}
-        description: First integration PR for ${{ parameters.microserviceName }}
-        sourcePath: ./  # Use root folder or customize
-        token: ${{ secrets.githubToken }}
+    # - id: add-service-to-caravan
+    #   name: Add Microservice Definition to Caravan
+    #   action: github:pull-request
+    #   input:
+    #     repoUrl: https://github.com/zwift/caravan
+    #     branchName: add-${{ parameters.microserviceName }}
+    #     title: Add new microservice ${{ parameters.microserviceName }}
+    #     description: First integration PR for ${{ parameters.microserviceName }}
+    #     sourcePath: ./  # Use root folder or customize
+    #     token: ${{ secrets.githubToken }}
 
-    - id: add-service-to-frame-sonarqube
-      name: Create Repository on GitHub
-      action: github:pull-request
-      input:
-        repoUrl: https://github.com/zwift/frame-sonarqube
-        branchName: add-${{ parameters.microserviceName }}
-        title: Add new microservice ${{ parameters.microserviceName }}
-        description: Second integration PR for ${{ parameters.microserviceName }}
-        sourcePath: ./  # Use root folder or customize
-        token: ${{ secrets.githubToken }}
+    # - id: add-service-to-frame-sonarqube
+    #   name: Create Repository on GitHub
+    #   action: github:pull-request
+    #   input:
+    #     repoUrl: https://github.com/zwift/frame-sonarqube
+    #     branchName: add-${{ parameters.microserviceName }}
+    #     title: Add new microservice ${{ parameters.microserviceName }}
+    #     description: Second integration PR for ${{ parameters.microserviceName }}
+    #     sourcePath: ./  # Use root folder or customize
+    #     token: ${{ secrets.githubToken }}
 
-    - id: add-service-to-cloudbox
-      name: Add Microservice to Cloudbox
-      action: github:pull-request
-      input:
-        repoUrl: https://github.com/zwift/cloudbox
-        branchName: add-${{ parameters.microserviceName }}
-        title: Add new microservice ${{ parameters.microserviceName }}
-        description: Final integration PR for ${{ parameters.microserviceName }}
-        sourcePath: ./  # Use root folder or customize
-        token: ${{ secrets.githubToken }}
+    # - id: add-service-to-cloudbox
+    #   name: Add Microservice to Cloudbox
+    #   action: github:pull-request
+    #   input:
+    #     repoUrl: https://github.com/zwift/cloudbox
+    #     branchName: add-${{ parameters.microserviceName }}
+    #     title: Add new microservice ${{ parameters.microserviceName }}
+    #     description: Final integration PR for ${{ parameters.microserviceName }}
+    #     sourcePath: ./  # Use root folder or customize
+    #     token: ${{ secrets.githubToken }}
 
-    - id: publish
-      name: Publish to GitHub
-      action: publish:github
-      input:
-        repoUrl: ${{ parameters.microserviceName }}
-        description: Service ${{ parameters.microserviceName }} published via Backstage.
-        repoVisibility: private
-        token: ${{ secrets.githubToken }}
+    # - id: publish
+    #   name: Publish to GitHub
+    #   action: publish:github
+    #   input:
+    #     repoUrl: ${{ parameters.microserviceName }}
+    #     description: Service ${{ parameters.microserviceName }} published via Backstage.
+    #     repoVisibility: private
+    #     token: ${{ secrets.githubToken }}
 
   output:
     links:
