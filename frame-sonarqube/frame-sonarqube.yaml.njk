@@ -1,0 +1,19 @@
+resource "sonarqube_project" "spokes-service" {
+  name       = "spokes-service"
+  project    = "com.zwift.microservices:spokes-service
+  tags       = ["team-pace", "product.spokes-service"]
+  visibility = "public"
+}
+
+resource "sonarqube_project_main_branch" "spokes-service-main" {
+  name    = "main"
+  project = sonarqube_project.spokes-service.project
+}
+
+resource "sonarqube_github_binding" "spokes-service-github" {
+  alm_setting             = local.github-zwift-alm
+  monorepo                = "false"
+  project                 = sonarqube_project.spokes-service.project
+  repository              = "zwift/spokes-service"
+  summary_comment_enabled = "true"
+}
