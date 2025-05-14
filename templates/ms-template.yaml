@@ -58,19 +58,19 @@ spec:
           features: ${{ parameters.features }}
     - id: delete-kafka
       if: ${{ !"Kafka" in parameters.features }}
-      action: filesystem:delete
+      action: fs:delete
       input:
-      files:
-        - ./src/main/java/com/example/${{ parameters.name | lower | replace("-", "") }}/async/KafkaConfig.java
+        files:
+          - ./src/main/java/com/example/${{ parameters.name | lower | replace("-", "") }}/async/KafkaConfig.java
     - id: delete-rest
       if: ${{ !"REST" in parameters.features }}
-      action: filesystem:delete
+      action: fs:delete
       input:
         files:
           - ./src/main/java/com/example/${{ parameters.name | lower | replace("-", "") }}/rest/HelloController.java
     - id: delete-postgres
       if: ${{ !"PostgreSQL" in parameters.features }}
-      action: filesystem:delete
+      action: fs:delete
       input:
         files:
           - ./src/main/java/com/zwift/${{ parameters.name | lower | replace("-", "") }}/persistence/UserRepository.java
