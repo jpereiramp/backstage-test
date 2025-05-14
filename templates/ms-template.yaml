@@ -29,7 +29,7 @@ spec:
       name: Generate Java Code
       action: fetch:template
       input:
-        url: github:https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
+        url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
         values:
           microserviceName: ${{ parameters.microserviceName }}
 
