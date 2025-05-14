@@ -39,7 +39,7 @@ spec:
           ui:widget: checkboxes
 
   steps:
-    - id: fetch-template
+    - id: fetch-java
       name: Generate Java Code
       action: fetch:template
       input:
@@ -47,7 +47,7 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
           features: ${{ parameters.features }}
-    - id: fetch-template
+    - id: fetch-k8s
       name: Generate K8s Code
       action: fetch:template
       input:
@@ -61,21 +61,21 @@ spec:
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.name | lower | replace("-", "") }}/async/KafkaConfig.java
+          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async/KafkaConfig.java
     - id: delete-rest
       if: ${{ !"REST" in parameters.features }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.name | lower | replace("-", "") }}/rest/HelloController.java
+          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest/HelloController.java
     - id: delete-postgres
       if: ${{ !"PostgreSQL" in parameters.features }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/zwift/${{ parameters.name | lower | replace("-", "") }}/persistence/UserRepository.java
-          - ./src/main/java/com/zwift/${{ parameters.name | lower | replace("-", "") }}/persistence/entity/User.java
-    - id: publish
+          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/UserRepository.java
+          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/entity/User.java
+    - id: publish-repo
       name: Publish to GitHub
       action: publish:github
       input:
@@ -86,4 +86,4 @@ spec:
   output:
     links:
       - title: Service Repository
-        url: ${{ steps.publish.output.remoteUrl }}
+        url: ${{ steps.publish-repo.output.remoteUrl }}
