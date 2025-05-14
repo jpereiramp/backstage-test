@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v13
+  title: Java Microservice v14
   description: Creates a new Java microservice with Springboot
 spec:
   owner: best-team
@@ -61,18 +61,21 @@ spec:
           postgresBoilerplate: ${{ parameters.postgresBoilerplate }}
         templateFileExtension: .njk
     - id: delete-kafka
+      name: Remove Kafka Boilerplate
       if: ${{ not parameters.kafkaBoilerplate }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async
+          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/async
     - id: delete-rest
+      name: Remove REST Boilerplate
       if: ${{ not parameters.restBoilerplate }}
       action: fs:delete
       input:
         files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest
+          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/rest
     - id: delete-postgres
+      name: Remove PostgreSQL Boilerplate
       if: ${{ not parameters.postgresBoilerplate }}
       action: fs:delete
       input:
