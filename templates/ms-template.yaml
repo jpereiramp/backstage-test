@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: java-ms-backstage-template
-  title: Java Microservice v6
+  title: Java Microservice v9
   description: Creates a new Java microservice with Springboot
 spec:
   owner: backstage/techdocs-core
@@ -47,6 +47,7 @@ spec:
         values:
           microserviceName: ${{ parameters.microserviceName }}
           features: ${{ parameters.features }}
+        templateFileExtension: .njk
     - id: fetch-k8s
       name: Generate K8s Code
       action: fetch:template
@@ -56,28 +57,7 @@ spec:
           microserviceName: ${{ parameters.microserviceName }}
           teamName: ${{ parameters.teamName }}
           features: ${{ parameters.features }}
-    - id: delete-kafka
-      name: Delete Kafka boilerplate
-      if: ${{ !parameters.features.includes("Kafka") }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/async/KafkaConfig.java
-    - id: delete-rest
-      name: Delete REST API boilerplate
-      if: ${{ !parameters.features.includes("REST") }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/com/example/${{ parameters.microserviceName | lower | replace("-", "") }}/rest/HelloController.java
-    - id: delete-postgres
-      name: Delete PostgreSQL boilerplate
-      if: ${{ !parameters.features.includes("PostgreSQL") }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/UserRepository.java
-          - ./src/main/java/com/zwift/${{ parameters.microserviceName | lower | replace("-", "") }}/persistence/entity/User.java
+        templateFileExtension: .njk
     - id: publish-repo
       name: Publish to GitHub
       action: publish:github
