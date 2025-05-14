@@ -28,6 +28,7 @@ spec:
         features:
           title: Select Features
           type: array
+          default: []
           items:
             type: string
             enum:
@@ -39,7 +40,7 @@ spec:
 
   steps:
     - id: fetch-template
-      name: Generate Java Code
+      name: Generate Java Code v2
       action: fetch:template
       input:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/java-skeleton
@@ -47,7 +48,7 @@ spec:
           microserviceName: ${{ parameters.microserviceName }}
           features: ${{ parameters.features }}
     - id: fetch-template
-      name: Generate K8s Code
+      name: Generate K8s Code v2
       action: fetch:template
       input:
         url: https://github.com/jpereiramp/backstage-test/blob/main/templates/k8s-skeleton
@@ -56,7 +57,7 @@ spec:
           teamName: ${{ parameters.teamName }}
           features: ${{ parameters.features }}
     - id: publish
-      name: Publish to GitHub v3
+      name: Publish to GitHub v4
       action: publish:github
       input:
         repoUrl: "github.com?repo=${{ parameters.microserviceName }}&owner=jpereiramp"
