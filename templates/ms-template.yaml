@@ -66,14 +66,14 @@ spec:
     #     sourcePath: ./  # Use root folder or customize
     #     token: ${{ secrets.githubToken }}
 
-    # - id: publish
-    #   name: Publish to GitHub
-    #   action: publish:github
-    #   input:
-    #     repoUrl: ${{ parameters.microserviceName }}
-    #     description: Service ${{ parameters.microserviceName }} published via Backstage.
-    #     repoVisibility: private
-    #     token: ${{ secrets.githubToken }}
+    - id: publish
+      name: Publish to GitHub
+      action: publish:github
+      input:
+        repoUrl: https://github.com/jpereiramp/${{ parameters.microserviceName }}
+        description: Service ${{ parameters.microserviceName }} published via Backstage.
+        repoVisibility: private
+        token: ${{ secrets.githubToken }}
 
   output:
     links:
